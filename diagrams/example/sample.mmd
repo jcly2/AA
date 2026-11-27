@@ -1,0 +1,17 @@
+flowchart LR
+  S[수집 처리] -->|쓰기| W[(센서 데이터 DB)]
+  subgraph PL[데이터 파이프라인]
+    P[변경 전달]
+    PA["요약 갱신 {K개}"]
+    RB[재구축]
+    P --> PA
+  end
+  P -->|변경 로그 읽기| W
+  RB -.->|원시 이력 조회| W
+  PA -->|가구별 요약 기록| RM[(판정용 요약 저장소)]
+  RB -.->|재계산| RM
+  M[이상 판정 관리] -->|판정 요청| J["이상탐지기 {K개}"]
+  J -->|요약 조회| RM
+  T((Timer)) --> M
+  classDef focus fill:#fde68a,stroke:#b45309,stroke-width:2px
+  class RM focus

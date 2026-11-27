@@ -1,0 +1,6 @@
+Gmail이 .js 파일이 든 압축 파일을 막아서, tools 폴더의 .js 파일 이름 끝에 .txt를 붙였습니다.
+압축을 푼 뒤 아래처럼 .txt를 떼고 사용하세요.
+
+  cd diagrams/tools
+  mv extract_layout.js.txt extract_layout.js
+  mv render_drawio_png.js.txt render_drawio_png.js
